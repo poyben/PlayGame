@@ -25,6 +25,5 @@ public class Juego {
     private float precio;
     private int stock;
     private String categoria;
-    private Seccion seccion;
     
 }
