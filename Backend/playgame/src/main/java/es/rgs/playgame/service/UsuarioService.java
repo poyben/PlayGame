@@ -1,10 +1,14 @@
 package es.rgs.playgame.service;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import es.rgs.playgame.dto.UsuarioDto;
+import es.rgs.playgame.model.Rol;
 import es.rgs.playgame.model.Usuario;
 import es.rgs.playgame.repository.IUsuarioRepository;
 import es.rgs.playgame.request.UsuarioRequest;
@@ -19,26 +23,22 @@ public class UsuarioService {
 	private final IUsuarioRepository userRepository;
 	
 	@Transactional
-	public UsuarioResponse updateUser(UsuarioRequest userRequest) {
-		
-		Usuario existingUser = userRepository.findById(userRequest.getId()).orElse(null);
+	public ResponseEntity<Usuario> updateUser(int id, UsuarioRequest userRequest) {
+	    Usuario existingUser = userRepository.findById(id).orElse(null);
 	    
 	    if (existingUser != null) {
-	        Usuario updatedUser = Usuario.builder()
-	            .id(existingUser.getId())
-	            .firstname(userRequest.getFirstname())
-	            .lastname(userRequest.getLastname())
-	            .username(userRequest.getUsername())
-	            .build();
-	        
-	        userRepository.updateUser(updatedUser.getId(), updatedUser.getFirstname(), 
-	                updatedUser.getLastname(), updatedUser.getUsername());
-	        
-	        return new UsuarioResponse("El usuario se ha modificado");
+	        existingUser.setFirstname(userRequest.getFirstname());
+	        existingUser.setLastname(userRequest.getLastname());
+	        existingUser.setUsername(userRequest.getUsername());
+
+	        userRepository.save(existingUser);
+
+	        return ResponseEntity.ok(existingUser);
 	    } else {
-	        return new UsuarioResponse("El usuario no existe");
+	        return ResponseEntity.notFound().build();
 	    }
 	}
+
 	
 	public UsuarioDto getUsuario(Integer id) {
 		Usuario user = userRepository.findById(id).orElse(null);
@@ -75,6 +75,23 @@ public class UsuarioService {
 	        }
 	    }
 	
-	
+	 public ResponseEntity<List<Usuario>> findAll() {
+	        List<Usuario> findAll = userRepository.findAll();
+	        if (findAll != null) {
+	            return ResponseEntity.ok(findAll);
+	        } else {
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+	        }
+	    }
+	 
+	 
+	 public ResponseEntity<Void> deleteById(Integer id) {
+		    if (userRepository.existsById(id)) {
+		    	userRepository.deleteById(id);
+		        return ResponseEntity.noContent().build();
+		    } else {
+		        return ResponseEntity.notFound().build();
+		    }
+		}
 	
 }
