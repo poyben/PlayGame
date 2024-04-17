@@ -1,5 +1,6 @@
 package es.rgs.playgame.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -38,7 +39,6 @@ public class Juego {
     private Categoria categoria;
     
     @ManyToMany(mappedBy = "juegos")
-    private List<Tienda> tiendas;
-    
+    private List<Tienda> tiendas = new ArrayList<>();
     
 }
