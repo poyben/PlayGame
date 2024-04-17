@@ -1,5 +1,7 @@
 package es.rgs.playgame.model;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +22,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="categorias")
-public class Categoria {
+public class Categoria implements Serializable{
 	@Id
 	@GeneratedValue
 	private int id;
