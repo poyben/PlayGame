@@ -1,5 +1,6 @@
 package es.rgs.playgame.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -12,6 +13,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,7 +28,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Usuario implements UserDetails{
+@Table(name="usuarios")
+public class Usuario implements UserDetails, Serializable{
 	@Id
 	@GeneratedValue
 	private int id;
