@@ -41,7 +41,7 @@ public class SecurityConfig {
                                 "/webjars/**",
                                 "/api/login",
                                 "/api/register",
-                                "/api/v1/**",
+                                //"/api/v1/**",
                                 "/v3/**",
                                 "/chat",
                                 "/topic/messages").permitAll()
