@@ -1,6 +1,7 @@
 package es.rgs.playgame.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -8,11 +9,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import es.rgs.playgame.dto.UsuarioDto;
-import es.rgs.playgame.model.Rol;
+import es.rgs.playgame.model.Tienda;
 import es.rgs.playgame.model.Usuario;
+import es.rgs.playgame.repository.ITiendaRepository;
 import es.rgs.playgame.repository.IUsuarioRepository;
 import es.rgs.playgame.request.UsuarioRequest;
-import es.rgs.playgame.response.UsuarioResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
@@ -21,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class UsuarioService {
 
 	private final IUsuarioRepository userRepository;
+	private final ITiendaRepository tiendaRepository;
 	
 	@Transactional
 	public ResponseEntity<Usuario> updateUser(int id, UsuarioRequest userRequest) {
@@ -94,4 +96,16 @@ public class UsuarioService {
 		    }
 		}
 	
+	 
+	 public ResponseEntity<Void> assignUserToStore(int userId, int storeId) {
+		 Usuario usuario = userRepository.findById(userId)
+		            .orElseThrow(NoSuchElementException::new);
+		    Tienda tienda = tiendaRepository.findById(storeId)
+		            .orElseThrow(NoSuchElementException::new);
+	        usuario.setTienda(tienda);
+	        userRepository.save(usuario);
+
+	        return ResponseEntity.ok().build();
+	    }
+	 
 }
