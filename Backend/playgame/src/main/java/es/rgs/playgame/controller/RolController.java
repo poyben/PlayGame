@@ -48,7 +48,7 @@ public class RolController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Rol> updatePatron(@PathVariable int id, @RequestBody Rol rol) {
+	public ResponseEntity<Rol> updateRol(@PathVariable int id, @RequestBody Rol rol) {
 		return rolService.updateRol(id, rol);
 	}
 	
