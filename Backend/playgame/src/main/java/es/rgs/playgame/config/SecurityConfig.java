@@ -32,7 +32,19 @@ public class SecurityConfig {
 						.requestMatchers(HttpMethod.GET).permitAll()
 						.requestMatchers(HttpMethod.OPTIONS).permitAll()
 						.requestMatchers("/auth/**",
-								"/h2-console/**").permitAll()
+								"/h2-console/**",
+								"/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/v2/**",
+                                "configuration/**",
+                                "/swagger*/**",
+                                "/webjars/**",
+                                "/api/login",
+                                "/api/register",
+                                "/api/v1/**",
+                                "/v3/**",
+                                "/chat",
+                                "/topic/messages").permitAll()
 						
 						.anyRequest().authenticated()
 						)
