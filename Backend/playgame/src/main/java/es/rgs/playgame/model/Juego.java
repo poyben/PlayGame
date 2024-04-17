@@ -30,12 +30,12 @@ public class Juego {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-    private String nombre;
-    private float precio;
+    private String name;
+    private float price;
     private int stock;
     
     @ManyToOne
-    @JoinColumn(name = "categoria")
+    //@JoinColumn(name = "categoria")
     private Categoria categoria;
     
     @ManyToMany(mappedBy = "juegos")
