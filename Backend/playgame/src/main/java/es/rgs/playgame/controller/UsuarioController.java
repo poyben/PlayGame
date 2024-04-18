@@ -17,6 +17,7 @@ import es.rgs.playgame.dto.UsuarioDto;
 import es.rgs.playgame.model.Usuario;
 import es.rgs.playgame.request.UsuarioRequest;
 import es.rgs.playgame.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -33,11 +34,13 @@ public class UsuarioController {
 		
 	}
 	*/
+	@Operation(summary = "Actualiza un usuario")
 	@PutMapping("/{id}")
 	public ResponseEntity<Usuario> updateUser(@PathVariable int id,@RequestBody UsuarioRequest userRequest){
 		return userService.updateUser(id,userRequest);
 	}
 	
+	@Operation(summary = "Busca usuario por ID")
 	@GetMapping("/{id}")
 	public UsuarioDto findById(@PathVariable int id) {
 	
@@ -45,16 +48,19 @@ public class UsuarioController {
 			
 	}
 	
+	@Operation(summary = "Busca todos los usuarios")
 	@GetMapping
 	public ResponseEntity<List<Usuario>> findAll() {
 		return userService.findAll();
 	}
 	
+	@Operation(summary = "Borra un usuario por su ID")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteById(@PathVariable Integer id) {
 	    return userService.deleteById(id);
 	}
 	
+	@Operation(summary = "Asigna un usuario a una tienda")
 	@PostMapping("/{userId}/store/{storeId}")
     public ResponseEntity<Void> assignUserToStore(@PathVariable int userId, @PathVariable int storeId) {
         return userService.assignUserToStore(userId, storeId);
