@@ -1,0 +1,39 @@
+
+
+
+.custom-navbar {
+    background-color: #FF7171; /* Cambia este valor al color que desees */
+    /* Otros estilos opcionales */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Añade un borde inferior */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade una sombra */
+    /* Ajusta el padding si es necesario */
+    padding: 10px 20px;
+    border-radius: 0 0 30px 30px; /* Redondea solo las esquinas inferiores */
+    
+}
+.navbar-brand {
+    font-family: "Brush Script MT", cursive; /* Cambia la fuente */
+    font-size: 2em; /* Cambia el tamaño de la fuente */
+    color: #ffffff; /* Cambia el color del texto */
+}
+.nav-link {
+    color: #ffffff; /* Cambia el color del texto */
+    font-size: 1.2em; /* Cambia el tamaño de la fuente */
+    font-family: "Brush Script MT", cursive; /* Cambia la fuente */
+}
+.nav-link.active {
+    color: #ffffff; /* Cambia el color del texto */
+    font-family: "Brush Script MT", cursive; /* Cambia la fuente */
+}
+
+.icon{
+    font-size: 25px;
+    color: #ffffff;
+    margin-top: 0.75rem;
+    cursor: pointer;
+}
+
+.nav-link.logout     {
+    color: #ffffff; /* Cambia el color del texto */
+    font-family: "Brush Script MT", cursive; /* Cambia la fuente */
+}

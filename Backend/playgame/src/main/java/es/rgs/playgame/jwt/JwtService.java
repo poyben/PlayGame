@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import es.rgs.playgame.repository.CustomUserDetails;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -22,17 +24,21 @@ public class JwtService {
 
 	private static final String SECRET_KEY = "RH3U2U3H938RYH8D3JOHF73FGGW63FDGI3KVXKU3B6DVX3KU3CFC7G7G3LG0YH";
 	
-	public String getToken(UserDetails user) {
+	public String getToken(CustomUserDetails user) {
 		//return getToken(new HashMap<>(), user);
 		Map<String, Object> claims = new HashMap<>();
         // Agrega los roles del usuario al claim.
+		claims.put("username", user.getUsername());
+		claims.put("email", user.getEmail());
+		claims.put("firstname", user.getFirstname());
+		claims.put("lastname", user.getLastname());
         claims.put("roles", user.getAuthorities().stream()
                                 .map(grantedAuthority -> grantedAuthority.getAuthority())
                                 .collect(Collectors.toList()));
         return getToken(claims, user);
 	}
 	
-	private String getToken(Map<String,Object> extraClaims, UserDetails user) {
+	private String getToken(Map<String,Object> extraClaims, CustomUserDetails user) {
 		return Jwts
 				.builder()
 				.setClaims(extraClaims)

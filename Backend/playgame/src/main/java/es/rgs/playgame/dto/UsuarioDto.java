@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class UsuarioDto {
 
 	int id;
+	String email;
 	String username;
 	String firstname;
 	String lastname;

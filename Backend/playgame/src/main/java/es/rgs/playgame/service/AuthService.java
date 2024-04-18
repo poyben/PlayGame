@@ -1,6 +1,8 @@
 package es.rgs.playgame.service;
 
 import es.rgs.playgame.dto.RolDto;
+import es.rgs.playgame.model.CustomUserDetailsImpl;
+import es.rgs.playgame.repository.CustomUserDetails;
 import es.rgs.playgame.model.Rol;
 import es.rgs.playgame.repository.IRolRepository;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -42,8 +44,8 @@ public class AuthService {
 	
 	public AuthResponse login(LoginRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-        UserDetails user = userRepository.findByUsername(request.getUsername()).orElseThrow();
-        String token = jwtService.getToken(user);
+		CustomUserDetails user = loadUserByUsername(request.getUsername());
+        String token = jwtService.getToken( user);
 		return AuthResponse.builder()
 				.token(token)
 				.build();
@@ -61,14 +63,22 @@ public class AuthService {
 				.build();
 		
 		userRepository.save(user);
+		CustomUserDetails userDetails = loadUserByUsername(request.getUsername()); // Cargar como CustomUserDetails
+		String token = jwtService.getToken(userDetails); // Convertir UserDetails a CustomUserDetails
 		return AuthResponse.builder()
-				.token(jwtService.getToken(user))
+				.token(token)
 				.build();
 	}
 
 	public Rol rolDtoToEntity(RolDto rolDto) {
 		Optional<Rol> optionalRol = rolRepository.findByName(rolDto.getName());
 		return optionalRol.orElseThrow(() -> new RuntimeException("Rol no encontrado: " + rolDto.getName()));
+	}
+
+	private CustomUserDetails loadUserByUsername(String username) {
+		Usuario usuario = userRepository.findByUsername(username)
+				.orElseThrow(() -> new RuntimeException("Usuario no encontrado: " + username));
+		return new CustomUserDetailsImpl(usuario);
 	}
 
 }

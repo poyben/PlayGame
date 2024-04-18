@@ -11,11 +11,11 @@ import { environment } from '../../../environments/environments';
 export class LoginService {
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  currentUserData: BehaviorSubject<String> =new BehaviorSubject<String>("");
+  currentUserData: BehaviorSubject<string> =new BehaviorSubject<string>("");
 
   constructor(private http: HttpClient) { 
     this.currentUserLoginOn=new BehaviorSubject<boolean>(sessionStorage.getItem("token")!=null);
-    this.currentUserData=new BehaviorSubject<String>(sessionStorage.getItem("token") || "");
+    this.currentUserData=new BehaviorSubject<string>(sessionStorage.getItem("token") || "");
   }
 
   login(credentials:LoginRequest):Observable<any>{
@@ -53,7 +53,7 @@ export class LoginService {
     return this.currentUserLoginOn.asObservable();
   }
 
-  get userToken():String{
+  get userToken():string{
     return this.currentUserData.value;
   }
 

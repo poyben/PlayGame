@@ -66,6 +66,7 @@ public class UsuarioService {
 	            Usuario user = optionalUser.get();
 	            UsuarioDto userDto = UsuarioDto.builder()
 	                    .id(user.getId())
+						.email(user.getEmail())
 	                    .username(user.getUsername())
 	                    .firstname(user.getFirstname())
 	                    .lastname(user.getLastname())
