@@ -22,7 +22,7 @@ public class RolService{
 		Rol rol = new Rol();
 		rol.setName(rolDto.getName());
 		Rol savedRol = rolRepository.save(rol);
-		return new RolDto(savedRol.getId(), savedRol.getName());
+		return new RolDto(/*savedRol.getId(), */savedRol.getName());
 	}
 	
 	

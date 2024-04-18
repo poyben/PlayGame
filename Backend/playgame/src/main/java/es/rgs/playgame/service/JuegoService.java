@@ -24,6 +24,8 @@ import lombok.RequiredArgsConstructor;
 public class JuegoService {
 
 	private final IJuegoRepository juegoRepository;
+	private final CategoriaService categoriaService;
+
 	
 	/*
 	public JuegoDto createJuego(JuegoDto juegoDto) {
@@ -63,11 +65,13 @@ public class JuegoService {
 	*/
 	
 	public JuegoDto createJuego(JuegoRequest request) {
+
+		Categoria categoria = categoriaService.findOrCreateCategoria(categoriaDtoToEntity(request.getCategoriaDto()));
 	Juego juego = Juego.builder()
 			.name(request.getName())
 			.price(request.getPrice())
 			.stock(request.getStock())
-			.categoria(request.getCategoria())
+			.categoria(categoria)
 			.build();
 	
 	Juego savedJuego = juegoRepository.save(juego);
@@ -139,5 +143,8 @@ public class JuegoService {
 	            .categoria(juego.getCategoria())
 	            .build();
 	}
+
+
+
 	
 }

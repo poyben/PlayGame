@@ -1,0 +1,58 @@
+<form [formGroup]="registerForm" class="full-width-form d-flex flex-column align-items-center">
+  <div class="form-group1 mb-3 d-flex ">
+    <input formControlName="email" type="email" class="form-control me-3" id="exampleInputEmail" aria-describedby="email" placeholder="Email">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+        <div *ngIf="email.errors?.['required']">
+            El email es requerido.
+        </div>
+        <div *ngIf="email.errors?.['email']">
+            Por favor, introduce un email válido.
+        </div>
+    </div>
+
+   
+      <input formControlName="username" type="text" class="form-control me-3" id="exampleInputUsername" aria-describedby="username"placeholder="Username">
+      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+        <div *ngIf="username.errors?.['required']">
+          El username es requerido.
+        </div>
+      </div>
+
+ 
+      <input formControlName="password" type="password" class="form-control me-3" id="exampleInputPassword" placeholder="Contraseña">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+        <div *ngIf="password.errors?.['required']">
+          El Password es requerido.
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="form-group1 mb-3 d-flex ">
+      <input formControlName="firstname" type="text" class="form-control me-3" id="exampleInputFirstname" placeholder="Nombre">
+      <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="text-danger">
+        <div *ngIf="firstname.errors?.['required']">
+          El First Name es requerido.
+        </div>
+      </div>
+      <input formControlName="lastname" type="text" class="form-control me-3" id="exampleInputLastname"placeholder="Apellidos">
+      <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="text-danger">
+        <div *ngIf="lastname.errors?.['required']">
+          El Last Name es requerido.
+        </div>
+      </div>
+      <select formControlName="rol" class="form-select" id="exampleInputRol">
+        <option disabled selected value="">Selecciona un Rol</option>
+        <option *ngFor="let rol of roles" [value]="rol.name">{{ rol.name }}</option>
+      </select>
+      <div *ngIf="rol.invalid && (rol.dirty || rol.touched)" class="text-danger">
+        <div *ngIf="rol.errors?.['required']">
+          El rol es requerido.
+        </div>
+      </div>
+    </div>
+    <button type="submit" (click)="register()" class="btn btn-primary">Registrar</button>
+  </form>
+  

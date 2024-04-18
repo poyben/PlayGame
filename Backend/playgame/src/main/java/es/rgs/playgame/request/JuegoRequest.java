@@ -1,5 +1,6 @@
 package es.rgs.playgame.request;
 
+import es.rgs.playgame.dto.CategoriaDto;
 import es.rgs.playgame.model.Categoria;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,6 +15,6 @@ public class JuegoRequest {
      String name;
      float price;
      int stock;
-     //CategoriaDto categoriaDto;
-     Categoria categoria;
+     CategoriaDto categoriaDto;
+     //Categoria categoria;
 }

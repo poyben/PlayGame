@@ -1,5 +1,6 @@
 package es.rgs.playgame.request;
 
+import es.rgs.playgame.dto.RolDto;
 import es.rgs.playgame.model.Rol;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +22,6 @@ public class RegisterRequest {
 	String password;
 	String firstname;
 	String lastname;
-	Rol rol;
+	RolDto rol;
 	
 }

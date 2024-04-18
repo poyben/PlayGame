@@ -1,0 +1,4 @@
+div{
+    background-color: #FF7171;
+    min-height: 100vh; /* Establece la altura mínima del div en 100% del viewport height */
+}

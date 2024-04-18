@@ -1,0 +1,42 @@
+form {
+    background-color: #FF7171;
+    width: 100%;
+    height: 100%;
+    margin-top: 11rem;
+}
+.form-select {
+    height: 4rem;/* Establece la misma altura que los inputs de texto */
+    margin-right: 0.75rem;
+    width:18rem; 
+}
+
+.form-control {
+    height: 4rem; /* Establece la misma altura que los inputs de texto */
+    margin-right: 0.75rem;
+    width:18rem; 
+}
+
+.form-group1{
+    padding-bottom: 3rem;
+}
+
+
+.btn-primary {
+    height: 4rem; /* Establece la misma altura que los inputs de texto */
+    margin-right: 0.75rem;
+    width: 18rem;
+    background-color: #ff5151; /* Color de fondo */
+    color: #463b3b; /* Color del texto */
+    border: 2px solid #463b3b;
+    border-radius: 0.5rem; /* Borde redondeado */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+    font-family: "Brush Script MT", cursive;
+    font-size: x-large;
+}
+
+.btn-primary:hover {
+    background-color: #F42854; /* Cambia el color de fondo al pasar el cursor */
+    color: #ffffff; /* Cambia el color del texto al pasar el cursor */
+    border-color: #ffffff;
+}

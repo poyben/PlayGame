@@ -23,7 +23,7 @@ public class CategoriaService {
 		Categoria categoria = new Categoria();
 		categoria.setName(categoriaDto.getName());
 		Categoria savedCategoria = categoriaRepository.save(categoria);
-		return new CategoriaDto(savedCategoria.getId(), savedCategoria.getName());
+		return new CategoriaDto(/*savedCategoria.getId(),*/ savedCategoria.getName());
 	}
 	
 	
@@ -67,6 +67,20 @@ public class CategoriaService {
 	    } else {
 	        return ResponseEntity.notFound().build();
 	    }
+	}
+
+	public Categoria findOrCreateCategoria(Categoria categoria) {
+		// Buscar la categoría en la base de datos
+		Optional<Categoria> optionalCategoria = categoriaRepository.findByName(categoria.getName());
+		if (optionalCategoria.isPresent()) {
+			// Si la categoría existe, devolverla
+			return optionalCategoria.get();
+		} else {
+			// Si la categoría no existe, crear una nueva categoría
+			Categoria categoriaNueva = new Categoria();
+			categoriaNueva.setName(categoria.getName());
+			return categoriaRepository.save(categoriaNueva);
+		}
 	}
 
 	
