@@ -33,13 +33,21 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       this.loginError="";
       this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
+        
         next: (userData) => {
           console.log(userData);
         },
         error: (errorData) => {
           console.error(errorData);
-          this.loginError=errorData;
-        },
+          console.log(JSON.stringify(errorData, null, 2));
+          if (errorData.error && errorData.error.text) {
+            this.loginError = "Error inesperado al procesar la solicitud: " + errorData.error.text;
+          } else if (errorData.message) {
+            this.loginError = "Error inesperado al procesar la solicitud: " + errorData.message;
+          } else {
+            this.loginError = "Error inesperado al procesar la solicitud.";
+          }
+            },
         complete: () => {
           console.info("Login completo");
           this.router.navigateByUrl('/inicio');

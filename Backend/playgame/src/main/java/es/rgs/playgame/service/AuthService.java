@@ -40,10 +40,13 @@ public class AuthService {
 	}
 	*/
 	
-	public String login(LoginRequest request) {
+	public AuthResponse login(LoginRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         UserDetails user = userRepository.findByUsername(request.getUsername()).orElseThrow();
-        return jwtService.getToken(user);
+        String token = jwtService.getToken(user);
+		return AuthResponse.builder()
+				.token(token)
+				.build();
     }
 
 	public AuthResponse register(RegisterRequest request) {
