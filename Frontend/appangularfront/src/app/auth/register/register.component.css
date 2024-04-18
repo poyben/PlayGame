@@ -40,3 +40,9 @@ form {
     color: #ffffff; /* Cambia el color del texto al pasar el cursor */
     border-color: #ffffff;
 }
+
+.form-control,
+.form-select,
+.btn-primary {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3); /* Ajusta el valor según sea necesario */
+}
