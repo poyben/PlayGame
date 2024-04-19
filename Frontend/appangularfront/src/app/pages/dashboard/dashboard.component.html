@@ -1,0 +1,33 @@
+<app-nav></app-nav>
+<script>
+    console.log(userService.getRol());
+    console.log("Valor devuelto por userService.getRol():", userService.getRol());
+    
+</script>
+<!--<button ngIf="user?.rol === 'ADMIN' || user?.rol === 'EMPLOYEE'" class="btn btn-primary mt-3" (click)="navigateToCreateGame()">Crear Nuevo Juego</button>-->
+<button *ngIf="userService.getRol().includes('ADMIN') || userService.getRol().includes('EMPLOYEE')" class="btn btn-primary mt-3" (click)="navigateToCreateGame()">Crear Nuevo Juego</button><div class="card-body">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3">
+        <div *ngFor="let juego of juegosResponse" class="col mb-3">
+            <div class="card">
+                <div class="card-header">
+                    <p class="pcategoria" >Categoría: {{ juego.categoria.name }}</p>
+                    <p><strong>{{ juego.name }}</strong></p><!---->
+                </div>
+                <div class="caratula">
+                    <p class="pcaratula"> [Caratula]</p>
+                </div>
+                <div class="card-footer">
+                    <p class="pprecio"><strong> {{ juego.price }}€</strong></p>
+                  
+                    <div class="dropdown" style="float:left;">
+                        <button class="dropbtn"><strong>+</strong></button>
+                        <div class="dropdown-content" style="left:0;">
+                            <a [routerLink]="['/editar', juego.id]" *ngIf="userService.getRol().includes('ADMIN') || userService.getRol().includes('EMPLOYEE')">Editar/Eliminar</a>                                <a href="#">Comprar</a>
+                        </div>
+                      </div>
+                 
+                </div>
+            </div>
+        </div>
+    
+</div>

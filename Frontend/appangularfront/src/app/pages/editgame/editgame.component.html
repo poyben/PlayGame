@@ -1,0 +1,58 @@
+<app-nav></app-nav>
+
+<div class="container">
+  <div class="row">
+    <!-- Columna de la carta del juego -->
+    <div class="col-md-6 mb-4">
+        <div *ngIf="juegoResponse" class="card">
+          <div class="card-header">
+            <p class="pcategoria" *ngIf="juego">Categoría: {{ juegoResponse.categoria ? juegoResponse.categoria.name : '' }}</p>
+            <p *ngIf="juegoResponse"><strong>{{ juegoResponse.name }}</strong></p>
+          </div>
+          <div class="caratula">
+            <p class="pcaratula"> [Caratula]</p>
+          </div>
+          <div class="card-footer">
+            <p class="pprecio" *ngIf="juegoResponse"><strong> {{ juegoResponse.price }}€</strong></p>
+          </div>
+        </div>
+      </div>
+    <!-- Columna del formulario y botones -->
+    <div class="col-md-6 col2">
+      <form [formGroup]="editForm" class="form-edit">
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" formControlName="name" class="form-control" id="inputCountry">
+          <div *ngIf="editForm.get('name')?.invalid && (editForm.get('name')?.dirty || editForm.get('name')?.touched)" class="text-danger">
+            <div *ngIf="editForm.get('name')?.errors?.['required']">
+              El name es requerido.
+            </div>
+          </div>
+        </div>
+        <div>
+          <label for="precio">Precio:</label>
+          <input type="number" formControlName="price" class="form-control" id="inputCountry">
+          <div *ngIf="editForm.get('price')?.invalid && (editForm.get('price')?.dirty || editForm.get('price')?.touched)" class="text-danger">
+            <div *ngIf="editForm.get('price')?.errors?.['required']">
+              El price es requerido.
+            </div>
+          </div>
+        </div>
+        <div>
+            <label for="categoria">Categoria:</label>
+            <input type="text" formControlName="categoria" class="form-control" id="inputCountry">
+            <div *ngIf="editForm.get('categoria')?.invalid && (editForm.get('categoria')?.dirty || editForm.get('categoriaDto')?.touched)" class="text-danger">
+              <div *ngIf="editForm.get('categoria')?.errors?.['required']">
+                La categoria es requerida.
+              </div>
+            </div>
+          </div>
+          
+      </form>
+      <div class="mt-2">
+        <button class="btn btn-dark" (click)="confirmEdit()">Confirmar Edición</button>
+        <button class="btn btn-dark" (click)="confirmDelete()">Eliminar Juego</button>
+      </div>
+    </div>
+  </div>
+</div>

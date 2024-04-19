@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#">{{username}}</a>
+      
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="/inicio">Inicio</a>
+        </li>
+        <li *ngIf="!userLoginOn" class="nav-item">
+          <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
+        </li>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="shopping_cart" class="icon"></mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person" class="icon" routerLink="/perfil" >></mat-icon>
+            </ul>
+        <ul class="navbar-nav ms-auto"> <!-- Utiliza ml-auto para empujar este elemento hacia la derecha -->
+          <li *ngIf="userLoginOn" class="nav-item">
+            <a class="nav-link logout" (click)="logout()"  >Cerrar Sesión</a>
+          </li>
+        </ul>
+      
+    </div>
+  </div>
+</nav>

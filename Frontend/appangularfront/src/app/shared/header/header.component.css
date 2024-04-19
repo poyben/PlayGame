@@ -1,0 +1,16 @@
+header {
+    background-color: #ffffff; /* Color principal del fondo */
+    border-radius: 0 0 50px 50px; /* Borde redondeado solo en las esquinas inferiores */
+    box-shadow: 0 5px 5px 0 #ad2424; /* Sombra en la parte inferior */}
+h1{
+    font-family: "Brush Script MT", cursive;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    color:#F42854;
+    font-size: 4em;
+}
+
+p{
+    color: #ffffff; /* Color del texto */
+}
+  

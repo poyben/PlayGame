@@ -1,0 +1,129 @@
+/* CSS personalizado para ajustar el tamaño de las cartas */
+.card {
+    width: 25rem; /* Ancho personalizado */
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    margin-left: 5%;
+}
+
+.pcategoria{
+    font-size: 1.2em;
+    color: #3d3d3d;
+    font-family: "Brush Script MT", cursive; 
+    margin-right: 10px; /* Agrega espacio entre el texto y el cuadro */
+}
+
+p{
+    font-size: 2em;
+    color: #FF7171;
+    font-family: "Brush Script MT", cursive; 
+    margin-right: 10px; /* Agrega espacio entre el texto y el cuadro */
+}
+
+.caratula{
+    height: 200px;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    background-color: lightgray;
+}
+
+.pcaratula{
+    font-size: 1.5em;
+    color: gray;
+    font-family: "Brush Script MT", cursive; 
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 18%;
+}
+
+.card-footer{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+}
+
+.popciones{
+    font-size: 3em;
+    color: #FF7171;
+    position: absolute;
+    font-family: "Brush Script MT", cursive; 
+    margin-left: 80%; /* Agrega espacio entre el texto y el cuadro */
+}
+
+.pprecio{
+    font-size: 2em;
+    color: #FF7171;
+}
+
+
+.dropbtn {
+    background-color: #FF7171;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #f1f1f1;}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #F42854;
+  }
+
+  .btn-primary{
+    height: 4rem; /* Establece la misma altura que los inputs de texto */
+    margin-right: 0.75rem;
+    width: 18rem;
+    background-color: #FFB6C1; /* Color de fondo */
+    color: #463b3b; /* Color del texto */
+    border: 2px solid #463b3b;
+    border-radius: 0.5rem; /* Borde redondeado */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+    font-family: "Brush Script MT", cursive;
+    font-size: x-large;
+    margin-left: 43%;
+}
+
+.btn-primary:hover {
+    background-color: #F42854; /* Cambia el color de fondo al pasar el cursor */
+    color: #ffffff; /* Cambia el color del texto al pasar el cursor */
+    border-color: #463b3b;
+}
