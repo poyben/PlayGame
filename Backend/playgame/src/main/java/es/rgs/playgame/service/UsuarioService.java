@@ -46,14 +46,14 @@ public class UsuarioService {
 		Usuario user = userRepository.findById(id).orElse(null);
 		
 		if(user!=null) {
-			UsuarioDto userDto = UsuarioDto.builder()
+			return UsuarioDto.builder()
 					.id(user.getId())
 					.username(user.getUsername())
 					.firstname(user.getFirstname())
 					.lastname(user.getLastname())
 					.rol(user.getRol())
 					.build();
-			return userDto;
+			
 		}
 		return null;
 		
@@ -64,7 +64,7 @@ public class UsuarioService {
 	        Optional<Usuario> optionalUser = userRepository.findById(id);
 	        if (optionalUser.isPresent()) {
 	            Usuario user = optionalUser.get();
-	            UsuarioDto userDto = UsuarioDto.builder()
+	            return  UsuarioDto.builder()
 	                    .id(user.getId())
 						.email(user.getEmail())
 	                    .username(user.getUsername())
@@ -72,7 +72,7 @@ public class UsuarioService {
 	                    .lastname(user.getLastname())
 	                    .rol(user.getRol())
 	                    .build();
-	            return userDto;
+	           
 	        } else {
 	            return null; 
 	        }

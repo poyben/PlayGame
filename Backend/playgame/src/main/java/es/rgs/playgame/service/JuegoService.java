@@ -30,42 +30,7 @@ public class JuegoService {
 
 	 CategoriaController categoriaController;
 	
-	/*
-	public JuegoDto createJuego(JuegoDto juegoDto) {
-	    Juego juego = new Juego();
-	    juego.setName(juegoDto.getName());  
-	    juego.setPrice(juegoDto.getPrice());
-	    juego.setStock(juegoDto.getStock());
-	    juego.setCategoria(categoriaDtoToEntity(juegoDto.getCategoriaDto()));  
-	    Juego savedJuego = juegoRepository.save(juego);
-	    return new JuegoDto(savedJuego.getId(), savedJuego.getName(), savedJuego.getPrice(), savedJuego.getStock(), categoriaToDto(savedJuego.getCategoria()));
-	}
-	*/
-	/*
-	public JuegoDto createJuego(JuegoDto juegoDto) {
-	    Juego juego = new Juego();
-	    juego.setName(juegoDto.getName());  
-	    juego.setPrice(juegoDto.getPrice());
-	    juego.setStock(juegoDto.getStock());
-	    
-	    // Verificar si la categoría DTO es nula
-	    if (juegoDto.getCategoriaDto() != null) {
-	        // Convertir la categoría DTO a entidad de categoría
-	        Categoria categoria = categoriaDtoToEntity(juegoDto.getCategoriaDto());
-	        // Establecer la categoría en el juego
-	        juego.setCategoria(categoria);
-	    }
-	    
-	    // Guardar el juego en la base de datos
-	    Juego savedJuego = juegoRepository.save(juego);
-	    
-	    // Convertir la categoría de la entidad de juego a DTO de categoría
-	    CategoriaDto categoriaDto = categoriaToDto(savedJuego.getCategoria());
-	    
-	    // Crear y retornar un nuevo DTO de juego con la categoría DTO establecida
-	    return new JuegoDto(savedJuego.getId(), savedJuego.getName(), savedJuego.getPrice(), savedJuego.getStock(), categoriaDto);
-	}
-	*/
+	
 	
 	public JuegoDto createJuego(JuegoRequest request) {
 

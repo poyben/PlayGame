@@ -31,16 +31,6 @@ public class AuthService {
 	private final AuthenticationManager authenticationManager;
 	private final IRolRepository rolRepository;
 
-	/*
-	public AuthResponse login(LoginRequest request) {
-		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-		UserDetails user = userRepository.findByUsername(request.getUsername()).orElseThrow();
-		String token= jwtService.getToken(user);
-		return AuthResponse.builder()
-				.token(token)
-				.build();
-	}
-	*/
 	
 	public AuthResponse login(LoginRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));

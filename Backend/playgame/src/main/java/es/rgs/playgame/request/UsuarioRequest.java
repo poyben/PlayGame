@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UsuarioRequest {
 
-	//int id;
 	String username;
 	String firstname;
 	String lastname;

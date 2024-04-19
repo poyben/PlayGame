@@ -16,5 +16,4 @@ public class JuegoRequest {
      float price;
      int stock;
      CategoriaDto categoriaDto;
-     //Categoria categoria;
 }

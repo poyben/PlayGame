@@ -27,13 +27,7 @@ import lombok.RequiredArgsConstructor;
 public class UsuarioController {
 	
 	private final UsuarioService userService;
-	/*
-	@GetMapping(value="{id}")
-	public ResponseEntity<UsuarioDto>getUser(@PathVariable Integer id){
-		return userService.getUsuario(id);
-		
-	}
-	*/
+	
 	@Operation(summary = "Actualiza un usuario")
 	@PutMapping("/{id}")
 	public ResponseEntity<Usuario> updateUser(@PathVariable int id,@RequestBody UsuarioRequest userRequest){

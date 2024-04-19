@@ -25,9 +25,7 @@ public class JwtService {
 	private static final String SECRET_KEY = "RH3U2U3H938RYH8D3JOHF73FGGW63FDGI3KVXKU3B6DVX3KU3CFC7G7G3LG0YH";
 	
 	public String getToken(CustomUserDetails user) {
-		//return getToken(new HashMap<>(), user);
 		Map<String, Object> claims = new HashMap<>();
-        // Agrega los roles del usuario al claim.
 		claims.put("username", user.getUsername());
 		claims.put("email", user.getEmail());
 		claims.put("firstname", user.getFirstname());

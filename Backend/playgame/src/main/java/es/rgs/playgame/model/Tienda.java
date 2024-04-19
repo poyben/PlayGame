@@ -29,6 +29,11 @@ import lombok.Setter;
 @Table(name="tiendas")
 public class Tienda {
 	
+	public Tienda(int i, String string, String string2) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

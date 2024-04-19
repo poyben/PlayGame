@@ -1,6 +1,5 @@
 package es.rgs.playgame.dto;
 
-import es.rgs.playgame.model.Categoria;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +14,5 @@ public class JuegoDto {
      String name;
      float price;
      int stock;
-    //private CategoriaDto categoriaDto;
      CategoriaDto categoria;
 }
