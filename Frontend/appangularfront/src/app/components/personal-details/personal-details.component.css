@@ -1,0 +1,98 @@
+.div-data{
+    text-align: center; 
+    font-size: 1.2em;
+     color: #ff7171;
+}
+
+.div-todo{
+    text-align: center; 
+    font-size: 1.2em; 
+    color: #ff7171; 
+    margin-top: 5%;
+}
+
+.data-container {
+    display: flex; /* Contenedor flexible */
+    flex-direction: column;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-content: center;
+}
+
+span {
+    width: max-content;
+    border: 3px solid #F42854;
+    border-radius: 0.5em;
+    padding: 0.5em 1em; /* Ajustar el relleno horizontal según sea necesario */
+    margin: 0.5em; /* Ajustar el margen vertical según sea necesario */
+    
+}
+
+.span-container {
+    display: flex;
+    flex-direction: row; /* Cambia la dirección a fila */
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: center; /* Centra horizontalmente los elementos */
+}
+
+p,label {
+    font-size: 1.7em;
+    color: #ff7171;
+    font-family: "Brush Script MT", cursive; 
+    margin-right: 10px; /* Agrega espacio entre el texto y el cuadro */
+}
+
+.inner-p{
+    color: rgb(117, 117, 117);
+}
+
+.btn-dark {
+    height: 4rem; /* Establece la misma altura que los inputs de texto */
+    margin-right: 0.75rem;
+    width: 25rem;
+    background-color: #FFB6C1; /* Color de fondo */
+    color: #463b3b; /* Color del texto */
+    border: 3px solid #463b3b;
+    border-radius: 0.5rem; /* Borde redondeado */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+    font-family: "Brush Script MT", cursive;
+    font-size: x-large;
+    margin-top: 2%;
+}
+
+.btn-dark:hover {
+    background-color: #F42854; /* Cambia el color de fondo al pasar el cursor */
+    color: #ffffff; /* Cambia el color del texto al pasar el cursor */
+    border-color: #463b3b;
+}
+
+
+span,
+
+.btn-dark {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3); /* Añade la sombra a todos los elementos */
+}
+
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    height: 4rem;
+    width: 25rem;
+    margin-right: 0.75rem;
+    border: 3px solid #463b3b;
+    border-radius: 0.5rem;
+    font-size: 1.2em;
+    padding: 0.5rem 1rem;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3); /* Añade la sombra a todos los elementos */
+
+}

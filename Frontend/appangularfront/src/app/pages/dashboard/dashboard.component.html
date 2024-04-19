@@ -1,13 +1,23 @@
 <app-nav></app-nav>
-<p *ngIf="!userLoginOn" class="alert alert-danger">Usuario NO autenticado</p>
-<p *ngIf="userLoginOn" class="alert alert-success">Usuario Autenticado</p>
 
-<div class="card ">
-    <div class="card-header">
-        Datos Personales
+<div class="card-container">
+   
+    <div class="card-body">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4">
+            <div *ngFor="let juego of juegos" class="col mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <p class="pcategoria">Categoría: {{ juego.categoria.name }}</p>
+                        <p><strong>{{ juego.name }}</strong></p>
+                    </div>
+                    <div class="caratula">
+                        <p class="pcaratula"> [Caratula]</p>
+                    </div>
+                    <div class="card-body">
+                        <p> {{ juego.price }}€</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-body m-0">
-        <app-personal-details></app-personal-details>
-    </div>
-
 </div>

@@ -1,4 +1,52 @@
 div{
     margin:15px;
-    background-color: darkgrey;
+    background-color: rgb(255, 255, 255);
+}
+
+
+/* CSS personalizado para ajustar el tamaño de las cartas */
+.card {
+    width: 25rem; /* Ancho personalizado */
+    
+}
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    margin-left: 15%;
+}
+
+.pcategoria{
+    font-size: 1.2em;
+    color: #3d3d3d;
+    font-family: "Brush Script MT", cursive; 
+    margin-right: 10px; /* Agrega espacio entre el texto y el cuadro */
+}
+
+
+p{
+    font-size: 1.5em;
+    color: #FF7171;
+    font-family: "Brush Script MT", cursive; 
+    margin-right: 10px; /* Agrega espacio entre el texto y el cuadro */
+}
+.caratula{
+    
+    height: 200px;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    background-color: lightgray;
+}
+
+.pcaratula{
+    font-size: 1.5em;
+    color: gray;
+    font-family: "Brush Script MT", cursive; 
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 18%;
 }

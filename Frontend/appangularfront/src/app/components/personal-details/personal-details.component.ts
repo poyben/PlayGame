@@ -32,6 +32,7 @@ export class PersonalDetailsComponent {
         this.registerForm.controls.firstname.setValue(userData.firstname);
         this.registerForm.controls.lastname.setValue(userData.lastname);
         this.registerForm.controls.email.setValue(userData.email);
+        this.registerForm.controls.username.setValue(userData.username);
       },
       error: (errorData) => {
         this.errorMessage = errorData

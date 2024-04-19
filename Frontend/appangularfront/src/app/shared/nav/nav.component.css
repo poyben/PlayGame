@@ -4,8 +4,8 @@
 .custom-navbar {
     background-color: #FF7171; /* Cambia este valor al color que desees */
     /* Otros estilos opcionales */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Añade un borde inferior */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade una sombra */
+    border-bottom: 4px solid rgba(68, 63, 63, 0.288); /* Añade un borde inferior */
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1); /* Añade una sombra */
     /* Ajusta el padding si es necesario */
     padding: 10px 20px;
     border-radius: 0 0 30px 30px; /* Redondea solo las esquinas inferiores */

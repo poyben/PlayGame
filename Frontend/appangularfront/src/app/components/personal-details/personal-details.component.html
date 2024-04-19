@@ -1,15 +1,26 @@
-<p *ngIf="errorMessage.length != 0" class="text-danger">{{ errorMessage }}</p>
-<div *ngIf="(userLoginOn && !editMode) || !userLoginOn">
-    <p><b> Nombre: </b> {{ user?.firstname }} </p>
-    <p><b> Apellido: </b> {{ user?.lastname }}</p>
-    <p><b> Email: </b> {{ user?.email }}</p>
+<div *ngIf="(userLoginOn && !editMode) || !userLoginOn" class="div-todo">
+    <div class="data-container">
+        <div class="span-container">
+            <p><b> Nombre: </b> </p><span><p class="inner-p">{{ user?.firstname }} </p></span>
+        </div>
+        <div class="span-container">
+            <p><b> Apellido: </b> </p><span><p class="inner-p"> {{ user?.lastname }}</p></span>
+        </div>
+        <div class="span-container">
+            <p><b> Email: </b> </p><span> <p class="inner-p">{{ user?.email }}</p></span>
+        </div>
+        <div class="span-container">
+            <p><b> Username: </b> </p><span><p class="inner-p"> {{ user?.username }}</p></span>
+        </div>
+    </div>
     
     <button *ngIf="userLoginOn && !editMode" (click)="editMode=true" class="btn btn-dark">
-        <img src="https://cdn.icon-icons.com/icons2/1572/PNG/96/3592815-compose-create-edit-edit-file-office-pencil-writing_107734.png" width="8%" alt="editar" />Editar Datos Personales
+        <img src="https://cdn.icon-icons.com/icons2/1744/PNG/512/3643749-edit-pen-pencil-write-writing_113397.png" width="8%" alt="editar" />    Editar Datos Personales
     </button>
 </div>
 
 
+<div class="form-container" style="margin-top: 3%;">
 <form *ngIf="userLoginOn && editMode" [formGroup]="registerForm" >
     <div class="form-group row">
         <label for="inputFirstName" class="col-sm-1 col-form-label">Nombre</label>
@@ -35,7 +46,7 @@
         </div>
     </div>
     </div>
-    <div class="form-group row border-bottom pb-3" >
+    <div class="form-group row  " >
         <label for="inputCountry" class="col-sm-1 col-form-label">Email</label>
         <div class="col-sm-11">
             <input type="text" formControlName="email" class="form-control" id="inputCountry">
@@ -47,7 +58,7 @@
             
     </div>
     </div>
-    <div class="form-group row border-bottom pb-3" >
+    <div class="form-group row">
         <label for="inputCountry" class="col-sm-1 col-form-label">Username</label>
         <div class="col-sm-11">
             <input type="text" formControlName="username" class="form-control" id="inputCountry">
@@ -56,9 +67,12 @@
                     El username es requerido.
                 </div>
             </div>
-            
+        </div>
     </div>
-    </div>
+    <div class="col-sm-12 mt-3">
     <button type="submit" (click)="savePersonalDetailsData()"  class="btn btn-dark mt-3">Guardar</button>
-    <a class="btn btn-danger mt-3" (click)="editMode=false">Cancelar</a>
+    <a class="btn btn-dark mt-3" (click)="editMode=false">Cancelar</a>
+</div>
 </form>
+
+</div>
