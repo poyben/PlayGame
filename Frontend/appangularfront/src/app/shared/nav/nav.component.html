@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/inicio">Dashboard</a>
+          <a class="nav-link active" routerLink="/inicio">Inicio</a>
         </li>
         <li *ngIf="!userLoginOn" class="nav-item">
           <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
@@ -18,7 +18,7 @@
             </ul>
         <ul class="navbar-nav ms-auto"> <!-- Utiliza ml-auto para empujar este elemento hacia la derecha -->
           <li *ngIf="userLoginOn" class="nav-item">
-            <a class="nav-link" (click)="logout()"  >Cerrar Sesión</a>
+            <a class="nav-link logout" (click)="logout()"  >Cerrar Sesión</a>
           </li>
         </ul>
       

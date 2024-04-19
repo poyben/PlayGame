@@ -4,6 +4,7 @@ import { Juego } from '../../services/juego/juego';
 import { JuegoService } from '../../services/juego/juego.service';
 import { Router } from '@angular/router';
 import { JuegoResponse } from '../../services/juego/juegoResponse';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +17,7 @@ export class DashboardComponent implements OnInit {
   juegos: Juego[] = [];
   juego?: Juego;
   userLoginOn:boolean=false;
-  constructor(private router:Router, private loginService:LoginService, private juegoService:JuegoService) { }
+  constructor(public userService: UserService,private router:Router, private loginService:LoginService, private juegoService:JuegoService) { }
 
   ngOnInit(): void {
     this.loginService.currentUserLoginOn.subscribe({
@@ -25,7 +26,11 @@ export class DashboardComponent implements OnInit {
       }
     });
     this.getJuegos();
+    console.log("Valor devuelto por userService.getRol():", this.userService.getRol());
   }
+
+
+  
   getJuegos(): void {
     this.juegoService.getJuegos().subscribe(
       juegos => {

@@ -37,3 +37,12 @@
     color: #ffffff; /* Cambia el color del texto */
     font-family: "Brush Script MT", cursive; /* Cambia la fuente */
 }
+
+.navbar-nav{
+    cursor: pointer;
+}
+.nav-link.logout{
+    background-color: #F42854;
+    border-radius: 25px;
+    width: 150px;
+}

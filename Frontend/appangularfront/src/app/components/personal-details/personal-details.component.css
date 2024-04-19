@@ -19,12 +19,13 @@
 }
 
 span {
-    width: max-content;
+    width: 30%; /* Utilizar un ancho relativo */
     border: 3px solid #F42854;
     border-radius: 0.5em;
     padding: 0.5em 1em; /* Ajustar el relleno horizontal según sea necesario */
-    margin: 0.5em; /* Ajustar el margen vertical según sea necesario */
-    
+    margin-left: 5%;
+    height: wrap-content;
+    margin-top: 1%;
 }
 
 .span-container {
@@ -39,6 +40,7 @@ p,label {
     color: #ff7171;
     font-family: "Brush Script MT", cursive; 
     margin-right: 10px; /* Agrega espacio entre el texto y el cuadro */
+    
 }
 
 .inner-p{
@@ -46,9 +48,7 @@ p,label {
 }
 
 .btn-dark {
-    height: 4rem; /* Establece la misma altura que los inputs de texto */
-    margin-right: 0.75rem;
-    width: 25rem;
+    width: 30%; /* Utilizar un ancho relativo */
     background-color: #FFB6C1; /* Color de fondo */
     color: #463b3b; /* Color del texto */
     border: 3px solid #463b3b;
@@ -58,6 +58,7 @@ p,label {
     font-family: "Brush Script MT", cursive;
     font-size: x-large;
     margin-top: 2%;
+    margin-left: 10%;
 }
 
 .btn-dark:hover {
@@ -65,14 +66,6 @@ p,label {
     color: #ffffff; /* Cambia el color del texto al pasar el cursor */
     border-color: #463b3b;
 }
-
-
-span,
-
-.btn-dark {
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3); /* Añade la sombra a todos los elementos */
-}
-
 
 .form-container {
     display: flex;
@@ -86,13 +79,14 @@ span,
 }
 
 .form-control {
-    height: 4rem;
-    width: 25rem;
-    margin-right: 0.75rem;
+    width: 90%; /* Utilizar un ancho relativo */
     border: 3px solid #463b3b;
     border-radius: 0.5rem;
     font-size: 1.2em;
     padding: 0.5rem 1rem;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3); /* Añade la sombra a todos los elementos */
+}
 
+p{
+    margin-left: 10%;
 }

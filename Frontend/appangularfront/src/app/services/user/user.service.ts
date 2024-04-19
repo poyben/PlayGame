@@ -1,21 +1,29 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, retry, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, of, retry, throwError } from 'rxjs';
 import { User } from '../auth/user';
 import { environment } from '../../../environments/environments';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../auth/login.service';
 import e from 'cors';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  
   errorMessage:String="";
   user?:User;
   userLoginOn:boolean=false;
   id: string = '';
+  rol:string='';
+
+  private jwtHelper: JwtHelperService = new JwtHelperService();
+  private rolesSubject: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  roles$ = this.rolesSubject.asObservable();
 
   registerForm=this.formBuilder.group({
     id:[''],
@@ -27,10 +35,42 @@ export class UserService {
 
 
 
-  constructor( private loginService:LoginService,private formBuilder:FormBuilder, private router:Router,private http:HttpClient,) {
-    
+  constructor( private loginService:LoginService,
+    private formBuilder:FormBuilder, 
+    private router:Router,
+    private http:HttpClient,) {
+    /*this.jwtHelper = new JwtHelperService();*/
+
+    const token = sessionStorage.getItem('token'); // Suponiendo que el token está almacenado en el localStorage
+    if (token) {
+      this.extractRolesFromToken(token);
     }
-  
+  }
+/*
+  private extractRolesFromToken(token: string): void {
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    const roles = decodedToken?.roles || [];
+    this.rolesSubject.next(roles);
+  }
+*/
+
+
+private extractRolesFromToken(token: string): void {
+  const decodedToken = this.jwtHelper.decodeToken(token);
+  const roles = decodedToken?.roles || [];
+  if (roles.length > 0) {
+    // Obtener solo el primer rol del array de roles
+    const primerRol = roles[0];
+    // Actualizar el BehaviorSubject con el primer rol
+    this.rolesSubject.next([primerRol]);
+  } else {
+    // Si no hay roles en el token, dejar el BehaviorSubject vacío
+    this.rolesSubject.next([]);
+  }
+}
+
+
+    
     ngOnInit(): void {
       this.loginService.currentUserLoginOn.subscribe({
         next:(userLoginOn) => {
@@ -45,9 +85,14 @@ export class UserService {
               if (decodedToken && decodedToken.id) {
                 // Establece el nombre de usuario en el formulario
                 this.id = decodedToken.username;
+                this.rol = decodedToken.rol;
                 
               }
+              
+              console.log("rol tOKEN:aaaaaa");
+              console.log("rol tOKEN:"+decodedToken.rol);
               console.log("username tOKEN:"+decodedToken.username);
+              
             }
           }
         }
@@ -100,5 +145,9 @@ export class UserService {
       console.error('Backend retornó el código de estado ', error.status, error.error);
     }
     return throwError(()=> new Error('Algo falló. Por favor intente nuevamente.'));
+  }
+
+  getRol(): string[] {
+    return this.rolesSubject.value;
   }
 }
