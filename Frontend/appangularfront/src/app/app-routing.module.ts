@@ -4,6 +4,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { EditgameComponent } from './pages/editgame/editgame.component';
+import { CreategameComponent } from './pages/creategame/creategame.component';
 
 const routes: Routes = [
 
@@ -11,7 +13,9 @@ const routes: Routes = [
   {path:"inicio", component:DashboardComponent},
   {path:"login", component:LoginComponent},
   {path:"registro", component:RegisterComponent},
-  {path:"perfil", component:ProfileComponent}
+  {path:"perfil", component:ProfileComponent},
+  {path:"editar/:id", component:EditgameComponent},
+  {path:"crear", component:CreategameComponent}
 ];
 
 @NgModule({

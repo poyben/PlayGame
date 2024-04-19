@@ -23,7 +23,7 @@ public class CategoriaService {
 		Categoria categoria = new Categoria();
 		categoria.setName(categoriaDto.getName());
 		Categoria savedCategoria = categoriaRepository.save(categoria);
-		return new CategoriaDto(/*savedCategoria.getId(),*/ savedCategoria.getName());
+		return new CategoriaDto(savedCategoria.getId(), savedCategoria.getName());
 	}
 	
 	

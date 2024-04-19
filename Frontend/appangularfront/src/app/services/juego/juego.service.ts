@@ -5,10 +5,12 @@ import { LoginService } from '../auth/login.service';
 import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from '../../../environments/environments';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { JuegoResponse } from './juegoResponse';
 @Injectable({
   providedIn: 'root'
 })
 export class JuegoService {
+  juegoResponse?:JuegoResponse;
   juego?:Juego;
   userId: string = '';
   userLoginOn:boolean=false;
@@ -66,12 +68,6 @@ export class JuegoService {
 
 
   getJuego(id:number):Observable<Juego>{
-    return this.http.get<Juego>(environment.urlApi+"/juego/"+id).pipe(
-      catchError(this.handleError)
-    ) 
-  }
-    
-  getJuegos(): Observable<Juego[]> {
     const token = this.loginService.userToken;
     console.log("Token de autorización:", token);
     if (!token) {
@@ -84,7 +80,77 @@ export class JuegoService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<Juego[]>(environment.urlApi + "/juego",{headers}).pipe(
+    return this.http.get<Juego>(environment.urlApi+"/juego/"+id,{headers}).pipe(
+      catchError(this.handleError)
+    ) 
+  }
+
+  getJuegoResponse(id:number):Observable<JuegoResponse>{
+    const token = this.loginService.userToken;
+    console.log("Token de autorización:", token);
+    if (!token) {
+      console.error("Token de autorización no disponible. La solicitud no se enviará.");
+      // Si no hay token disponible, lanzar un error
+      return throwError(() => new Error('Token de autorización no disponible.'));
+    }
+
+    // Construir el encabezado con el token de autorización
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<JuegoResponse>(environment.urlApi+"/juego/"+id,{headers}).pipe(
+      catchError(this.handleError)
+    ) 
+  }
+    
+  getJuegos(): Observable<JuegoResponse[]> {
+    const token = this.loginService.userToken;
+    console.log("Token de autorización:", token);
+    if (!token) {
+      console.error("Token de autorización no disponible. La solicitud no se enviará.");
+      // Si no hay token disponible, lanzar un error
+      return throwError(() => new Error('Token de autorización no disponible.'));
+    }
+
+    // Construir el encabezado con el token de autorización
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<JuegoResponse[]>(environment.urlApi + "/juego",{headers}).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  updateJuego(id: number, juego: Juego): Observable<Juego> {
+    const token = this.loginService.userToken;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json' // Especifica el tipo de contenido como JSON
+    });
+    return this.http.put<Juego>(`${environment.urlApi}/juego/${id}`, juego, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  
+  deleteJuego(id: number): Observable<void> {
+    const token = this.loginService.userToken;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete<void>(`${environment.urlApi}/juego/${id}`, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+  
+
+  createJuego(juego: Juego): Observable<Juego> {
+    const token = this.loginService.userToken;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json' // Especifica el tipo de contenido como JSON
+    });
+    return this.http.post<Juego>(`${environment.urlApi}/juego`, juego, { headers }).pipe(
       catchError(this.handleError)
     );
   }

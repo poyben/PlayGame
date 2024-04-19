@@ -1,23 +1,34 @@
 <app-nav></app-nav>
-
+<button class="btn btn-primary mt-3" (click)="navigateToCreateGame()">Crear Nuevo Juego</button>
 <div class="card-container">
    
     <div class="card-body">
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-4">
-            <div *ngFor="let juego of juegos" class="col mb-4">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3">
+            <div *ngFor="let juego of juegosResponse" class="col mb-3">
                 <div class="card">
                     <div class="card-header">
-                        <p class="pcategoria">Categoría: {{ juego.categoria.name }}</p>
-                        <p><strong>{{ juego.name }}</strong></p>
+                        <p class="pcategoria" >Categoría: {{ juego.categoria.name }}</p>
+                        <p><strong>{{ juego.name }}</strong></p><!---->
                     </div>
                     <div class="caratula">
                         <p class="pcaratula"> [Caratula]</p>
                     </div>
-                    <div class="card-body">
-                        <p> {{ juego.price }}€</p>
+                    <div class="card-footer">
+                        <p class="pprecio"><strong> {{ juego.price }}€</strong></p>
+                      
+                        <div class="dropdown" style="float:left;">
+                            <button class="dropbtn"><strong>+</strong></button>
+                            <div class="dropdown-content" style="left:0;">
+                                <a [routerLink]="['/editar', juego.id]">Editar/Eliminar</a>
+                                    <a href="#">Link 2</a>
+                            <a href="#">Link 3</a>
+                            </div>
+                          </div>
+                     
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
 </div>

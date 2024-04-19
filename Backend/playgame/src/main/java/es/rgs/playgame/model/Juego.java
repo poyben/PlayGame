@@ -40,5 +40,8 @@ public class Juego {
     
     @ManyToMany(mappedBy = "juegos")
     private List<Tienda> tiendas = new ArrayList<>();
-    
+
+    @ManyToMany(mappedBy = "juegos")
+    private List<Usuario> usuarios = new ArrayList<>();
+
 }

@@ -17,6 +17,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatIconModule } from '@angular/material/icon';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { EditgameComponent } from './pages/editgame/editgame.component';
+import { CreategameComponent } from './pages/creategame/creategame.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     PersonalDetailsComponent,
     RegisterComponent,
     ProfileComponent,
+    EditgameComponent,
+    CreategameComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,5 +16,5 @@ public class JuegoDto {
      float price;
      int stock;
     //private CategoriaDto categoriaDto;
-     Categoria categoria;
+     CategoriaDto categoria;
 }

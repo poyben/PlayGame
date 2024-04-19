@@ -3,6 +3,7 @@ package es.rgs.playgame.service;
 import java.util.List;
 import java.util.Optional;
 
+import es.rgs.playgame.controller.CategoriaController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import es.rgs.playgame.request.JuegoRequest;
 import es.rgs.playgame.request.RegisterRequest;
 import es.rgs.playgame.response.AuthResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.client.RestTemplate;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +28,7 @@ public class JuegoService {
 	private final IJuegoRepository juegoRepository;
 	private final CategoriaService categoriaService;
 
+	 CategoriaController categoriaController;
 	
 	/*
 	public JuegoDto createJuego(JuegoDto juegoDto) {
@@ -104,28 +107,50 @@ public class JuegoService {
 	        return ResponseEntity.notFound().build();
 	    }
 	}
-	
-	
-	public ResponseEntity<Juego> updateJuego(int id, Juego juego) {
-	    Optional<Juego> juegoOptional = juegoRepository.findById(id);
-	    if (juegoOptional.isPresent()) {
-	    	Juego existingJuego = juegoOptional.get();
-	        existingJuego.setName(juego.getName());
-	        existingJuego.setPrice(juego.getPrice());
-	        existingJuego.setStock(juego.getStock());
-	        existingJuego.setCategoria(juego.getCategoria());
-	        Juego updatedJuego = juegoRepository.save(existingJuego);
-	        return ResponseEntity.ok(updatedJuego);
-	    } else {
-	        return ResponseEntity.notFound().build();
-	    }
+
+
+	public ResponseEntity<Juego> updateJuego(int id, JuegoDto juego) {
+		Optional<Juego> juegoOptional = juegoRepository.findById(id);
+		if (juegoOptional.isPresent()) {
+			Juego existingJuego = juegoOptional.get();
+			existingJuego.setName(juego.getName());
+			existingJuego.setPrice(juego.getPrice());
+			existingJuego.setStock(juego.getStock());
+
+			// Verificar si la categoría DTO no es nula
+			if (juego.getCategoria() != null) {
+				CategoriaDto categoriaDto = juego.getCategoria();
+
+				// Crear una instancia de categoría basada en el DTO
+				Categoria categoria = new Categoria();
+				categoria.setName(categoriaDto.getName());
+
+				// Buscar o crear la categoría en la base de datos
+				Categoria existingCategoria = categoriaService.findOrCreateCategoria(categoria);
+
+				// Establecer la nueva categoría en el juego
+				existingJuego.setCategoria(existingCategoria);
+			}
+
+			// Guardar el juego actualizado en la base de datos
+			Juego updatedJuego = juegoRepository.save(existingJuego);
+			return ResponseEntity.ok(updatedJuego);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 	
 	public Categoria categoriaDtoToEntity(CategoriaDto categoriaDto) {
-        Categoria categoria = new Categoria();
-        categoria.setName(categoriaDto.getName());
-        return categoria;
+		if (categoriaDto != null) {
+			Categoria categoria = new Categoria();
+			categoria.setName(categoriaDto.getName());
+			return categoria;
+		} else {
+			// Manejar el caso en que categoriaDto es nulo, por ejemplo, lanzar una excepción o devolver un valor por defecto
+			// Aquí estoy lanzando una excepción para señalar el error
+			throw new IllegalArgumentException("El objeto CategoriaDto es nulo");
+		}
     }
 	
 	public CategoriaDto categoriaToDto(Categoria categoria) {
@@ -140,7 +165,7 @@ public class JuegoService {
 	            .name(juego.getName())
 	            .price(juego.getPrice())
 	            .stock(juego.getStock())
-	            .categoria(juego.getCategoria())
+	            .categoria(categoriaToDto(juego.getCategoria()))
 	            .build();
 	}
 

@@ -20,7 +20,7 @@ export class AppComponent {
 
   isNormalRoute(url: string): boolean {
     console.log(url);
-    return url === '/inicio' || url === '/perfil';
+    return url === '/inicio' || url === "/crear" || url === '/perfil' ||  /^\/editar\/\d+$/.test(url); 
   }
 
   shouldShowHeader(): boolean {

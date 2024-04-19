@@ -11,7 +11,7 @@
     justify-content: space-around;
     align-items: center;
     align-content: center;
-    margin-left: 5%;
+    margin-left: 15%;
 }
 
 .pcategoria{
@@ -106,8 +106,14 @@ p{
   .dropdown:hover .dropbtn {
     background-color: #F42854;
   }
+  
 
-  .btn-primary{
+  .col2{
+   margin-top: 10%;
+  }
+
+
+  .btn-dark {
     height: 4rem; /* Establece la misma altura que los inputs de texto */
     margin-right: 0.75rem;
     width: 18rem;
@@ -119,11 +125,24 @@ p{
     transition: background-color 0.3s, color 0.3s; /* Transición suave */
     font-family: "Brush Script MT", cursive;
     font-size: x-large;
-    margin-left: 43%;
 }
 
-.btn-primary:hover {
+.btn-dark:hover {
     background-color: #F42854; /* Cambia el color de fondo al pasar el cursor */
     color: #ffffff; /* Cambia el color del texto al pasar el cursor */
-    border-color: #463b3b;
+    border-color: #ffffff;
+}
+
+
+.form-control {
+    height: 4rem;
+    width: 36.8rem;
+    margin-right: 0.75rem;
+    margin-bottom: 3rem;
+    border: 3px solid #463b3b;
+    border-radius: 0.5rem;
+    font-size: 1.2em;
+    padding: 0.5rem 1rem;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3); /* Añade la sombra a todos los elementos */
+
 }
