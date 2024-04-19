@@ -9,4 +9,3 @@ import es.rgs.playgame.model.Juego;
 public interface IJuegoRepository extends JpaRepository<Juego,Integer>{
 	Optional<Juego> findByName(String name);
 }
-

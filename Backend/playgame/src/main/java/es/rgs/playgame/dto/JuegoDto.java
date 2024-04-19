@@ -15,4 +15,5 @@ public class JuegoDto {
      float price;
      int stock;
      CategoriaDto categoria;
+
 }
